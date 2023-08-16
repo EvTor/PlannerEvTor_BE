@@ -58,7 +58,7 @@ class UserController {
                 }
                 //Send activation link
                 const activationLink = uuidv4();
-                await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
+                await mailService.sendActivationMail(email, `${process.env.SITE_URL}/api/activate/${activationLink}`);
                 //Create new User
                 const user = new User({
                     email,

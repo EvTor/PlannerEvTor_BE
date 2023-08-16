@@ -18,7 +18,7 @@ class MailService {
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to,
-            subject: "Account activation" + process.env.API_URL,
+            subject: "Account activation" + process.env.SITE_URL,
             text: '',
             html:
                 `
@@ -129,7 +129,7 @@ class MailService {
                             width: 100%;
                             text-align: end;
                             ">
-                        <a href="${process.env.CLIENT_URL}/invites">
+                        <a href="${process.env.SITE_URL}/invites">
                         <button style="
                     width: 8rem;
                     height: 2rem;
@@ -265,7 +265,7 @@ class MailService {
                             width: 100%;
                             text-align: end;
                             ">
-                        <a href="${process.env.CLIENT_URL}">
+                        <a href="${process.env.SITE_URL}">
                         <button style="
                     width: 8rem;
                     height: 2rem;
