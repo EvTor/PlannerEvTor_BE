@@ -125,7 +125,7 @@ class UserController {
                 //Generate jwt token and save refresh Token in DB
                 const tokens = tokenService.generateTokens(user._id, user.role, user.isActivated);
                 const refreshTokenDB = await tokenService.saveTokenToDB(user._id, tokens.refreshToken);
-                res.cookie('refreshToken', refreshTokenDB, {maxAge: 1000, httpOnly: true});
+                res.cookie('refreshToken', refreshTokenDB, {maxAge: 1000*60*60*12, httpOnly: true});
                 return res.json({tokens, user, message: "Successful login!"});
             } catch (err) {
                 console.log(err);
@@ -169,7 +169,7 @@ class UserController {
                     user.role,
                     user.isActivated);
                 const refreshTokenDB = await tokenService.saveTokenToDB(user._id, tokens.refreshToken);
-                res.cookie('refreshToken', refreshTokenDB, {maxAge: 1000, httpOnly: true});
+                res.cookie('refreshToken', refreshTokenDB, {maxAge: 1000*60*60*12, httpOnly: true});
                 return res.json({
                     "tokens": tokens,
                     user: {_id: user._id, role: user.role, isActivated: user.isActivated}
